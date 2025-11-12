@@ -1,1 +1,2 @@
-web: python3 cc.py
+python-telegram-bot[webhooks]
+requests
