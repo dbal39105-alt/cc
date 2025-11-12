@@ -425,23 +425,24 @@ def main():
         application = Application.builder().token(bot.token).build()
         
         # --- Render Webhook Configuration ---
-        # Render यह 'PORT' एनवायरनमेंट वेरिएबल अपने आप सेट करता है
         PORT = int(os.environ.get("PORT", 8443))
         
         # 'RENDER_EXTERNAL_URL' भी Render द्वारा सेट किया जाता है।
-        # यह आपकी ऐप का public URL होता है, जैसे: my-bot.onrender.com
-        # हम 'RENDER_EXTERNAL_URL' से 'https://' हटा देते हैं (अगर हो तो)
-        # क्योंकि Render इसे 'my-bot.onrender.com' के रूप में प्रदान करता है
-        HOST_URL = os.environ.get("RENDER_EXTERNAL_URL")
+        HOST_URL_FROM_RENDER = os.environ.get("RENDER_EXTERNAL_URL")
         
-        if not HOST_URL:
+        if not HOST_URL_FROM_RENDER:
             logger.error("!!! ERROR: RENDER_EXTERNAL_URL एनवायरनमेंट वेरिएबल नहीं मिला! !!!")
             logger.error("सुनिश्चित करें कि आप इसे Render 'Web Service' पर डिप्लॉय कर रहे हैं।")
             sys.exit(1)
         
+        # --- !!! यह URL फिक्स है !!! ---
+        # यह सुनिश्चित करता है कि URL में 'https://' सिर्फ एक बार हो
+        # 'https://cc-jbno.onrender.com' -> 'cc-jbno.onrender.com'
+        HOST_URL = HOST_URL_FROM_RENDER.replace("https://", "").replace("http://", "")
+        # --- फिक्स खत्म ---
+        
         # Webhook का पूरा URL
-        # हम Telegram को बताते हैं कि अपडेट्स इस URL पर भेजने हैं
-        # उदा: https://my-bot.onrender.com/8490946201:AAFScU...
+        # उदा: https://cc-jbno.onrender.com/8490946201:AAFScU...
         WEBHOOK_URL = f"https://{HOST_URL}/{BOT_TOKEN}"
 
         cancel_filter = filters.Regex("^(Cancel|cancel)$")
@@ -481,16 +482,14 @@ def main():
         
         logger.info("Multi-Info Bot Webhook पर शुरू हो रहा है...")
         logger.info(f"Using Bot Token: {bot.token[:10]}...")
-        logger.info(f"Setting webhook url: {WEBHOOK_URL}")
+        logger.info(f"Setting webhook url: {WEBHOOK_URL}") # यह लॉग अब सही URL दिखाएगा
         
         # --- Polling को Webhook से बदलना ---
-        # यह Telegram को बताता है कि हमारा webhook कहाँ है
-        # और Render को बताता है कि किस port पर सुनना है
         application.run_webhook(
             listen="0.0.0.0",
             port=PORT,
-            url_path=BOT_TOKEN, # वह path जिस पर bot सुनेगा (टोकन)
-            webhook_url=WEBHOOK_URL # वह URL जो Telegram को दिया जाएगा
+            url_path=BOT_TOKEN, 
+            webhook_url=WEBHOOK_URL 
         )
         
         logger.info(f"Multi-Info Bot Webhook पर 0.0.0.0:{PORT} पर चल रहा है।")
