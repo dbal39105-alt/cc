@@ -110,7 +110,7 @@ class InfoBot:
                 developer = data.get('developer', '')
                 if developer:
                     formatted_text += f"━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                    formatted_text += f"💳 API by: {developer}\n"
+                    formatted_text += f"💳 API by: C̶R̶A̶K̶A̶ \n"
                 
             else:
                 logger.warning(f"No valid records found in API response")
