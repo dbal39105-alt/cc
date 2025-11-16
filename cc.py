@@ -110,7 +110,7 @@ class InfoBot:
                 developer = data.get('developer', '')
                 if developer:
                     formatted_text += f"━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                    formatted_text += f"💳 API by: {C̶R̶A̶K̶A̶ } \n"
+                    formatted_text += f"💳 API by: C̶R̶A̶K̶A̶  \n"
                 
             else:
                 logger.warning(f"No valid records found in API response")
@@ -198,7 +198,7 @@ class InfoBot:
                             formatted_text += f"• 🔐 UID Linked: {uid_linked}\n\n"
                     
                     formatted_text += "━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-                    formatted_text += "💳"
+                    formatted_text += "💳 API by: C̶R̶A̶K̶A̶  \n"
                     
                 else:
                     formatted_text += "No family members found."
