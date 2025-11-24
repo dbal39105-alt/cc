@@ -27,8 +27,8 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = os.getenv("BOT_TOKEN") 
 # ---------------------
 
-PHONE_API_URL = "https://demon.taitanx.workers.dev/?mobile="
-AADHAAR_API_URL = "https://family-members-n5um.vercel.app/fetch"
+PHONE_API_URL = "https://ox-tawny.vercel.app/search_mobile?mobile="
+AADHAAR_API_URL = "https://rajan-aadhar-tofamily.vercel.app/fetch?key="
 
 # Conversation states
 NUMBER_INPUT, AADHAAR_INPUT = 1, 2
