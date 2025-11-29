@@ -1,2 +1,5 @@
-python-telegram-bot[webhooks]
+pyTelegramBotAPI
+Flask
+psutil
 requests
+google-generativeai
