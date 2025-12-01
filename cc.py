@@ -155,7 +155,7 @@ if not TOKEN:
 
 OWNER_ID = int(os.getenv('OWNER_ID', '7575315425'))
 ADMIN_ID = int(os.getenv('ADMIN_ID', '7575315425'))
-YOUR_USERNAME = os.getenv('BOT_USERNAME', '@YourBotUsername')
+YOUR_USERNAME = os.getenv('BOT_USERNAME', '@Get_image_file_id_bot')
 UPDATE_CHANNEL = os.getenv('UPDATE_CHANNEL', 'https://t.me/crakacwa')
 LOG_CHANNEL = os.getenv('LOG_CHANNEL', 'https://t.me/crakacwa')
 
