@@ -123,7 +123,7 @@ if not TOKEN:
     sys.exit(1)
 OWNER_ID = int(os.getenv('OWNER_ID', '7575315425'))
 ADMIN_ID = int(os.getenv('ADMIN_ID', '6286724764'))
-YOUR_USERNAME = os.getenv('BOT_USERNAME', 'C̶R̶A̶K̶A̶')
+YOUR_USERNAME = os.getenv('BOT_USERNAME', '@DM_CRAKA_OWNER_BOT')
 UPDATE_CHANNEL = os.getenv('UPDATE_CHANNEL', 'https://t.me/crakacwa')
 LOG_CHANNEL = os.getenv(
     'LOG_CHANNEL',
